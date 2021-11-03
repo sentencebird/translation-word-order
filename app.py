@@ -1,6 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 import torch
+import pickle
 
 from transformers import MBart50TokenizerFast, MBartForConditionalGeneration
 
@@ -10,7 +11,9 @@ from constants import *
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    return MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
+    f = open("model.pkl", "rb")
+    return pickle.load(f)
+    #return MBartForConditionalGeneration.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
 
 @st.cache(allow_output_mutation=True)
 def load_tokenizer():
