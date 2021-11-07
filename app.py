@@ -68,7 +68,7 @@ def load_model():
 
 @st.cache(allow_output_mutation=True)
 def load_tokenizer():
-    return MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-many-mmt")
+    return MBart50TokenizerFast.from_pretrained("facebook/mbart-large-50-many-to-many-mmt", use_fast=False)
 
 class Translation():
     def __init__(self, src_lang, dest_lang):
